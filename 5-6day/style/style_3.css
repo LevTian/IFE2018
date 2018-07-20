@@ -24,7 +24,7 @@ body
 
 }
 
-.content div h3
+.sub h3
 {
     font-size: 1.6em;
     text-align: center;
@@ -32,25 +32,29 @@ body
     height: 45px;
     margin: 0px;
     padding: 25px 0 0 0;
-   /* border-bottom: solid 1px #ffffff; */
+   border-bottom: solid 1px #ffffff;
     background-color: #d4d2d2;
     float: left;
 }
 
-.content div div
+.sub div
 {
     font-size: 1.6em;
     line-height: 0.5;
-    width: 700px;
+    width: 699px;
     height: 70px;
   /*  border-right: solid 1px  #d4d2d2;
-    border-bottom: solid 1px  #d4d2d2; */
+    border-bottom: solid 1px  #d4d2d2; 
+    background-color: aqua;*/
     float: left;
 }
 
-.content div
+.sub
 {
-    border: solid 1px #d4d2d2;
+    border-right: solid 1px #d4d2d2;
+    border-bottom: solid 1px #d4d2d2;
+    width: 800px;
+  /*  background-color: yellow;     */
     box-sizing: border-box;
 }
 

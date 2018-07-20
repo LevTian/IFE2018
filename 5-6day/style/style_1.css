@@ -4,6 +4,13 @@ html
     font-family: 'Microsoft yahei', 'Times New Roman', Times, serif;
 }
 
+body
+{
+    min-width: 600px;
+    max-width: 900px;
+    margin: 10px auto;
+}
+
 .head h1
 {
     font-size: 3.6em;
