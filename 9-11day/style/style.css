@@ -5,4 +5,363 @@
 
 body {
     font-size: 10px;
+    font-family:  STXihei, Arial, Helvetica, sans-serif;
+    word-spacing: 0.3em;
+    letter-spacing: 0.3;
 }
+
+h2 {
+    font-size: 3.6em;
+    font-weight: normal;
+}
+
+h6 {
+    font-size: 1.6em;
+    font-weight: normal;
+}
+
+p {
+    font-size: 1.6em;
+}
+
+#content {
+    width: 1600px;
+    margin: 0 auto;
+}
+
+#content #hw {
+    width: 100%;
+    height: 990px;
+    background-image: url(../images/bk_01.png);
+    /* opacity: 0.5; */
+}
+
+#hw #transbox, #sp_info #sp_info_transbox {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* background-color: #000000;
+    opacity: 0.6; */
+}
+
+#hc_box {
+    height: 600px;
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 200px;
+    
+    position: relative;
+}
+
+#hc_box h2 {
+    text-align: center;
+    line-height: 4;
+    color: #ffffff;
+}
+
+#hc_box p {
+    line-height: 2;
+    text-align: center;
+    color: #a7a4a4;
+    padding: 0 100px;
+}
+
+#hc_box #f_account {
+    height: 250px;
+    width: 100%;
+    border: 1px solid #333131; 
+    position: absolute;
+    bottom: 0;
+}
+
+#f_account h6 {
+    color: #ffffff;
+    text-align: center;
+    margin-top: 50px;
+}
+
+#f_account p {
+    color: #a7a4a4;
+    font-size: 1em;
+}
+
+#f_account form {
+    margin-top: 50px;
+    text-align: center;
+}
+
+#f_account form #email, #f_account form #password{
+    border: 1px solid #333131;
+    background-color: transparent;
+    height: 40px;
+    color: #ffffff;
+    padding-left: 5px;
+    margin-right: 8px;
+}
+
+#f_account form #bt_s {
+    height: 40px;
+    width: 80px;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #ffffff;
+    border-radius: 2px;
+}
+
+#d_boa {
+    height: 700px;
+    width: 1000px;
+    padding: 0 300px;
+    background-color: #ffffff;
+}
+
+#d_boa #text_bot {
+    height: 200px;
+    width: 100%;
+    padding: 60px 0;
+    color: #000000;
+    text-align: center;
+}
+
+#text_bot p {
+    line-height: 3;
+}
+
+#text_bot h2 {
+    line-height: 2;
+    margin: 0 200px;
+}
+
+#icon_bot .icon_box {
+    width: 500px;
+    margin-bottom: 70px;
+}
+
+#icon_bot img {
+    float: left;
+}
+
+#icon_bot .des {
+    margin: 0 70px;
+    width: 300px;
+}
+
+#icon_bot h6 {
+    font-weight: bold;
+    line-height: 2;
+}
+
+#icon_bot p {
+    line-height: 2;
+}
+
+#icon_bot {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#sp_info {
+    position: relative;
+    width: 100%;
+    height: 800px;
+    background-image: url(../images/fog.png)
+
+}
+
+#suport {
+    width: 500px;
+    height: 500px;
+    padding: 150px 0 150px 300px;
+    
+}
+
+#suport h2 {
+    color: #ffffff;
+    width: 350px;
+}
+
+#suport p {
+    color: #a7a4a4;
+    width: 350px;
+    margin: 50px 0;
+}
+
+#suport button {
+    height: 50px;
+    width: 200px;
+    font-size: 1em;
+    border-radius: 2px;float: left;
+    
+}
+
+#suport #bt1 {
+    margin-right: 50px;
+    background-color: #ffffff;
+}
+
+#suport button:nth-of-type(2) {
+    background-color: transparent;
+    border: 1px solid #535a58;
+    color: #ffffff;
+}
+
+#sp_info img:nth-of-type(1) {
+    position: absolute;
+    right: 0;
+    top: 100px;
+}
+
+#sp_info img:nth-of-type(2) {
+    position: absolute;
+    right: 0;
+    top: 130px;
+}
+#f_products {
+    height: 500px;
+    width: 100%;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+#products {
+    height: 500px;
+    width: 1000px;
+    margin: 0 300px;
+}
+
+#products h2 {
+    text-align: center;
+    padding: 50px 0;
+}
+
+#pro_box .pro_info{
+    float: left;
+    width: 300px;
+    text-align: center;
+    margin-right: 50px; 
+}
+
+#pro_box .pro_info:nth-of-type(3) {
+    margin-right: 0;
+}
+
+#pro_box .pro_info img {
+    margin-bottom: 30px;
+}
+
+#pro_box::after  {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#f_shows {
+    height: 900px;
+    width: 100%;
+    padding-top: 100px;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+#shows {
+    width: 1000px;
+    margin: 0 300px 100px 300px;
+}
+
+#business {
+    margin-bottom: 100px;
+}
+
+#business img {
+    float: left;
+    margin-right: 120px;
+}
+
+#business::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#shows .show_info h6{
+    font-weight: bold;
+    padding: 50px 0 30px 0;
+}
+
+#schemes img {
+    float: right;
+    margin-left: 120px;
+}
+
+#schemes::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#crew {
+    width: 1000px;
+    height: 900px;
+    padding: 50 300;
+}
+
+#crew_info {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#crew_info h2 {
+    line-height: 2;
+}
+
+#crew_info p {
+    margin: 0 100px;
+}
+
+#crew_desc {
+    height: 710px;
+    width: 1000px;
+    position: relative;
+}
+
+#crew_desc #crew_one > img{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#crew_desc #crew_two > img{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#crew_desc #crew_three > img{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+#crew_desc #crew_four > img{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+#crew_desc .hide_info {
+    box-sizing: border-box;
+    width: 470px;
+    height: 340px;
+    padding-top: 100px;
+    text-align: center;
+}
+
+#crew_desc .hide_info h6 {
+    color: #ffffff;
+    line-height: 2;
+}
+
+#crew_desc .hide_info p {
+    /* color: #ffffff; */
+    line-height: 2;
+    padding-bottom: 50px;
+}
+
