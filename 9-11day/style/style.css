@@ -301,6 +301,7 @@ p {
     width: 1000px;
     height: 900px;
     padding: 50 300;
+    border-bottom: 1px solid #e7e7e7;
 }
 
 #crew_info {
@@ -322,25 +323,25 @@ p {
     position: relative;
 }
 
-#crew_desc #crew_one > img{
+#crew_desc #crew_one > img, #crew_desc #crew_one_info {
     position: absolute;
     left: 0;
     top: 0;
 }
 
-#crew_desc #crew_two > img{
+#crew_desc #crew_two > img, #crew_desc #crew_two_info {
     position: absolute;
     right: 0;
     top: 0;
 }
 
-#crew_desc #crew_three > img{
+#crew_desc #crew_three > img, #crew_desc #crew_three_info {
     position: absolute;
     left: 0;
     bottom: 0;
 }
 
-#crew_desc #crew_four > img{
+#crew_desc #crew_four > img, #crew_desc #crew_four_info {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -352,6 +353,8 @@ p {
     height: 340px;
     padding-top: 100px;
     text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    visibility: hidden;
 }
 
 #crew_desc .hide_info h6 {
@@ -360,8 +363,24 @@ p {
 }
 
 #crew_desc .hide_info p {
-    /* color: #ffffff; */
+    color: #908f8f;
     line-height: 2;
     padding-bottom: 50px;
+}
+
+#crew_desc .hide_info img {
+    margin-right: 20px;
+}
+
+#crew_one:hover #crew_one_info, #crew_two:hover #crew_two_info,
+#crew_three:hover #crew_three_info, #crew_four:hover #crew_four_info {
+    visibility: visible;
+}
+
+#contacts {
+    width: 1000px;
+    height: 700px;
+    padding: 50 300;
+    border-bottom: 1px solid #e7e7e7;
 }
 
