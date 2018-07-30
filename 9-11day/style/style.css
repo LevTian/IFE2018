@@ -494,6 +494,7 @@ p {
 }
 
 #foot .foot_flex a {
+    font-size: 1.6em;
     text-decoration: none;
     color: #a5a3a3;
 }
