@@ -3,11 +3,14 @@
     padding: 0;
 }
 
+html {
+    width: 100%;
+    height: 100%;
+}
 body {
     font-size: 10px;
     width: auto;
     height: 100%;
-    margin: 5px auto;
     box-sizing: border-box;
 }
 
@@ -59,7 +62,7 @@ body {
 
 #chat #chat_box {
     width: 100%;
-    height: 850px;
+    height: calc(100% - 150px);
     display: flex;
 }
 
@@ -70,7 +73,7 @@ body {
 }
 
 #chat #chat_box #ochat {
-    width: 850px;
+    width: calc(100% - 400px);
     height: 100%;
     background-color: violet;
 }
