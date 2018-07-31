@@ -29,15 +29,17 @@ body {
 }
 
 #menu #primary {
+    position: relative;
     width: 100px;
     height: 100%;
-    background-color: aqua;
+    background-color: #1d2531;
 }
 
 #menu #secondary {
+    position: relative;
     width: 250px;
     height: 100%;
-    background-color: azure;
+    background-color: #222c3c;
 }
 
 #chat {
@@ -48,10 +50,9 @@ body {
 }
 
 #chat #profile {
+    position: relative;
     width: 100%;
     height: 80px;
-    background-color: bisque;
-
 }
 
 #chat #search_box {
@@ -77,3 +78,158 @@ body {
     height: 100%;
     background-color: violet;
 }
+
+#menu #primary .p_item{
+    margin: 20px 20px 0 20px;
+}
+
+#menu #primary #p_active {
+    position: absolute;
+    left: 0;
+    top: 40px;
+}
+
+#menu #primary .p_abs {
+    position: absolute;
+    bottom: 20px;
+}
+
+#menu #primary #p_grid {
+    left: 20px;
+}
+
+#menu #primary #p_setting {
+    left: 50px;
+}
+
+#secondary a {
+    text-decoration: none;
+}
+
+#secondary .sec_item {
+    margin: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #303a4a;
+}
+
+#secondary .sec_item h6 {
+    color: #535f71;
+    float: left;
+}
+
+#secondary .sec_item .item_head a {
+    float: right;
+}
+
+#secondary .sec_item .item_head::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#secondary .sec_item a {
+    line-height: 2.8;
+    color: #99a2b0;
+}
+
+#sec_products img {
+    padding-top: 8px;
+    float: left;
+}
+
+#sec_products p {
+    margin-left: 30px;
+}
+
+#secondary #sec_foot {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    width: 210px;
+    height: 40px;
+}
+
+#secondary #sec_foot p {
+    position: absolute;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+#secondary #sec_foot p:nth-of-type(1) {
+    left: 0px;
+    top: 0px
+}
+
+#secondary #sec_foot p:nth-of-type(2) {
+    right: 20px;
+    top: 0px;
+}
+
+#secondary #sec_foot img {
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+}
+
+#secondary .color_blue {
+    display: inline-block;
+    height: 20px;
+    width: 25px;
+    background-color: #2ea1f7;
+}
+
+.sec_item a p img {
+    float: right;
+    margin-top: 4px;
+}
+
+#sec_dashboard a .active {
+    color: #ffffff;
+}
+
+#profile h6 {
+    font-size: 2.4em;
+    font-weight: normal;
+    margin: 20px 0 0 30px;
+}
+
+#profile #my_profile {
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    right: 30px;
+    top: 15px;
+}
+
+#profile #my_profile img:nth-of-type(1) {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#profile #my_profile img:nth-of-type(2) {
+    position: absolute;
+    top: 34px;
+    left: 34px;
+}
+
+#profile #my_profile p {
+    position: absolute;
+    top: 0;
+    left: 70px;
+    line-height: 1.8;
+    font-weight: bold;
+    color: #c3c2c2;
+}
+
+#profile #my_profile p span {
+    color: #2399f1;
+}
+
+#profile #my_profile img:nth-of-type(3) {
+    position: absolute;
+    right: 0;
+    top: 23px;
+}
+
+
