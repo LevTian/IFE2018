@@ -1,0 +1,38 @@
+html 
+{
+    font-size: 10px;
+    font-family: 'Microsoft yahei', 'Times New Roman', Times, serif;
+}
+
+body
+{
+    min-width: 600px;
+    max-width: 900px;
+    margin: 10px auto;
+}
+
+.head h1
+{
+    font-size: 3.6em;
+}
+
+.content div h3
+{
+    font-size: 2.4em
+}
+
+.content div p
+{
+    font-size: 1.6em
+}
+
+.content div p .bold
+{
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.content div p .block
+{
+    display: block;
+}
