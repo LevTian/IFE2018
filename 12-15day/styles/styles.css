@@ -12,6 +12,8 @@ body {
     width: auto;
     height: 100%;
     box-sizing: border-box;
+    min-width: 1350px;
+    min-height: 800px;
 }
 
 #content {
@@ -29,15 +31,17 @@ body {
 }
 
 #menu #primary {
+    position: relative;
     width: 100px;
     height: 100%;
-    background-color: aqua;
+    background-color: #1d2531;
 }
 
 #menu #secondary {
+    position: relative;
     width: 250px;
     height: 100%;
-    background-color: azure;
+    background-color: #222c3c;
 }
 
 #chat {
@@ -48,16 +52,17 @@ body {
 }
 
 #chat #profile {
+    position: relative;
     width: 100%;
     height: 80px;
-    background-color: bisque;
-
+    border-bottom: 1px solid #e8e8ea;
 }
 
 #chat #search_box {
+    position: relative;
     width: 100%;
     height: 70px;
-    background-color: brown;
+    border-bottom: 1px solid #e8e8ea;
 }
 
 #chat #chat_box {
@@ -69,11 +74,354 @@ body {
 #chat #chat_box #chats {
     width: 400px;
     height: 100%;
-    background-color: yellow;
+    border-right: 1px solid #e8e8ea;
+    overflow: hidden;
 }
 
 #chat #chat_box #ochat {
     width: calc(100% - 400px);
     height: 100%;
-    background-color: violet;
+}
+
+#menu #primary .p_item{
+    margin: 20px 20px 0 20px;
+}
+
+#menu #primary #p_active {
+    position: absolute;
+    left: 0;
+    top: 40px;
+}
+
+#menu #primary .p_abs {
+    position: absolute;
+    bottom: 20px;
+}
+
+#menu #primary #p_grid {
+    left: 20px;
+}
+
+#menu #primary #p_setting {
+    left: 50px;
+}
+
+#secondary a {
+    text-decoration: none;
+}
+
+#secondary .sec_item {
+    margin: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #303a4a;
+}
+
+#secondary .sec_item h6 {
+    color: #535f71;
+    float: left;
+}
+
+#secondary .sec_item .item_head a {
+    float: right;
+}
+
+#secondary .sec_item .item_head::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#secondary .sec_item a {
+    line-height: 2.8;
+    color: #99a2b0;
+}
+
+#sec_products img {
+    padding-top: 8px;
+    float: left;
+}
+
+#sec_products p {
+    margin-left: 30px;
+}
+
+#secondary #sec_foot {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    width: 210px;
+    height: 40px;
+}
+
+#secondary #sec_foot p {
+    position: absolute;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+#secondary #sec_foot p:nth-of-type(1) {
+    left: 0px;
+    top: 0px
+}
+
+#secondary #sec_foot p:nth-of-type(2) {
+    right: 20px;
+    top: 0px;
+}
+
+#secondary #sec_foot img {
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+}
+
+#secondary .color_blue {
+    display: inline-block;
+    height: 20px;
+    width: 25px;
+    background-color: #2ea1f7;
+}
+
+.sec_item a p img {
+    float: right;
+    margin-top: 4px;
+}
+
+#sec_dashboard a .active {
+    color: #ffffff;
+}
+
+#profile h6 {
+    font-size: 2.4em;
+    font-weight: normal;
+    margin: 20px 0 0 30px;
+}
+
+#profile #my_profile {
+    position: absolute;
+    width: 240px;
+    height: 50px;
+    right: 30px;
+    top: 15px;
+}
+
+#profile #my_profile img:nth-of-type(1) {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#profile #my_profile img:nth-of-type(2) {
+    position: absolute;
+    top: 34px;
+    left: 34px;
+}
+
+[name_style="bold"] {
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
+#profile #my_profile p {
+    position: absolute;
+    top: 0;
+    left: 70px;
+    color: #c3c2c2;
+}
+
+#profile #my_profile p span {
+    color: #2399f1;
+}
+
+#profile #my_profile img:nth-of-type(3) {
+    position: absolute;
+    right: 0;
+    top: 23px;
+}
+
+#search_box #search {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 100%;
+    border-right: 1px solid #e8e8ea;
+}
+
+#search_box #profile_name {
+    position: absolute;
+    top: 0;
+    left: 400px;
+    width: calc(100% - 400px);
+    height: 100%;
+    /* margin: 20px 30px 20px 30px; */
+}
+
+#search_box #search input {
+    width: 340px;
+    height: 40px;
+    margin: 15px 30px 15px 30px;
+    padding: 0 20px 0 10;
+    border: 1px solid #e8e8ea;
+    border-radius: 5px;
+    text-indent: 10px;
+}
+
+#search_box #search img {
+    position: absolute;
+    top: 27px;
+    right: 43px;
+}
+
+#search_box #profile_name p:nth-of-type(1) {
+    position: absolute;
+    left: 30px;
+    top: 25px;
+}
+
+#search_box #profile_name p img {
+    position: absolute;
+    top: 10px;
+    left: 115px;
+}
+
+#search_box #profile_name #tool_img {
+    position: absolute;
+    top: 20px;
+    right: 200px;
+}
+
+#search_box #profile_name #empty {
+    position: absolute;
+    top: 20px;
+    right: 175px;
+    height: 32px;
+    width: 0;
+    border-right: 1px solid #e8e8ea;
+}
+
+#search_box #profile_name p:nth-of-type(2) {
+    position: absolute;
+    top: 20px; 
+    right: 120px;
+    font-weight: bold;
+    line-height: 2;
+}
+
+#search_box #profile_name #lr_img {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+#chat_box #chats .chat_mmb {
+    width: 100%;
+    border-bottom: 1px solid #e8e8ea;
+    
+}
+
+#chats .chat_mmb #mmb_info {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    
+}
+
+#chats .chat_mmb #mmb_info > img {
+    position: absolute;
+    top: 15px;
+    left: 30px;
+}
+
+#chats .chat_mmb #mmb_info p:nth-of-type(1) {
+    position: absolute;
+    top: 20px;
+    left: 100px;
+}
+
+#chats .chat_mmb #mmb_info p:nth-of-type(1) img {
+    margin-right: 5px;
+}
+
+#chats .chat_mmb #mmb_info p:nth-of-type(2) {
+    position: absolute;
+    top: 45px;
+    left: 100px;
+    color: #aaacaf;
+}
+
+#chats .chat_mmb #mmb_info p:nth-of-type(3) {
+    position: absolute;
+    top: 35px;
+    right: 30px;
+    color: #57667b;
+}
+
+#chats .chat_mmb #mmb_article {
+    margin: 0 30px 25px 30px;
+    line-height: 1.5;
+    color: #3c3c3c;
+}
+
+#chat_box #ochat .ochat_info {
+    margin: 20px;
+}
+
+#chat_box #ochat .ochat_info::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#chat_box #ochat .ochat_info img {
+    float: left;
+}
+
+#chat_box #ochat .ochat_info #info_box {
+    float: right;
+    width: calc(100% - 75px)
+}
+
+#info_box > p:nth-child(1) {
+    line-height: 2;
+}
+
+#info_box img {
+    margin: 10px 15px 0 0;
+}
+
+.line {
+    position: relative;
+    width: 100%;
+    height: 0;
+    border-bottom: 1px solid #e8e8ea;
+}
+
+.line p {
+    position: absolute;
+    top: -10px;
+    left: 49%;
+    padding: 0 10px;
+    background-color: #ffffff;
+}
+
+#chat_box #ochat #add_chat {
+    position: relative;
+    width: 100%;
+    height: 54px;
+}
+
+#chat_box #ochat #add_chat img {
+    position: absolute;
+    top: 0;
+    left: 30px;
+}
+
+#chat_box #ochat #add_chat input {
+    position: absolute;
+    top: 0;
+    left: 84px;
+    height: 54px;
+    width: calc(100% - 120px);
+    border: 1px solid #e8e8ea;
 }

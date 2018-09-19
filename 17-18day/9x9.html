@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>9x9</title>
+        <meta charset="utf-8" />
+        <style type="text/css" >
+            #tb {
+                border: 1px solid #000000;
+            }
+
+            #tb td {
+                border: 1px solid #000000;
+            }
+        </style>
+    </head>
+    <body>
+        <table id="tb">
+            
+        </table>
+        <script>
+            var tb = document.getElementById("tb");
+            for (var i=1; i<10; i++)
+            {
+                var tr = document.createElement("tr");
+                tr.setAttribute(name="class", value="tr");
+                for (var j=1; j<10; j++)
+                {
+                    var td = document.createElement("td");
+                    td.textContent = i + " * " + j + " = " + i*j + " ";
+                    // console.log(i + " * " + j + " = " + i*j);
+                    tr.appendChild(td);
+                }
+                
+                tb.appendChild(tr);
+            }
+            
+        </script>
+    </body>
+</html>
