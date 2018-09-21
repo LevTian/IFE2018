@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>tyy</title>
+        <meta charset="utf-8" />
+        <style type="text/css">
+           #wrap {
+               width: 480px;
+               height: 480px;
+               margin: 100px auto;
+           }
+           #pic {
+               width: 100%;
+               height: 100%;
+               background-image: url("images/face.jpg");
+               background-repeat: no-repeat;
+           }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="pic"></div>
+        </div>
+        <script type="text/javascript">
+            var oPic = document.querySelector("#pic");
+            var i = 0;
+            var timer = setInterval(function() {
+                i++;
+                if (i > 16) i = 0;
+                oPic.style.backgroundPosition = "0 " + -480*i + "px ";
+            }, 100); 
+        </script>
+    </body>
+</html>
