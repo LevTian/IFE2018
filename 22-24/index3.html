@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>选择器</title>
+        <meta charset="utf-8" />
+        <style type="text/css">
+
+            
+            
+        </style>
+    </head>
+    <body>
+        
+        <p id="result"></p>
+        <script type="text/javascript">
+            /*
+            实现一个字符串头尾去除空格的函数
+            注意需要去除的空格，包括全角、半角空格
+            暂时不需要学习和使用正则表达式的方式
+            */
+            function diyTrim(str) {
+                var result = "";
+                var temp = str;
+                for (var i=1; i<str.length; i++) {
+                    if (temp.indexOf(" ") == 0 || temp.indexOf("　") == 0) {
+                        temp = str.slice(i);
+                    } else {
+                        break;
+                    }
+                }
+                if (temp.length <= 0) {
+                    result = temp;
+                } else {
+                    
+                    for (var i=temp.length-1; i>0; i--) {
+                        if (temp.lastIndexOf(" ") == i || temp.lastIndexOf("　") == i) {
+                            temp = temp.slice(0, -1);
+                        } else {
+                            break;
+                        }
+                    }
+                    result = temp;
+                }
+                
+
+                return result
+            }
+
+            // 测试用例
+            console.log(diyTrim(' a f b    ')); // ->a f b
+            console.log(diyTrim('    ffdaf    ')); // ->ffdaf
+            console.log(diyTrim('1    ')); // ->1
+            console.log(diyTrim('　　f')); // ->f
+            console.log(diyTrim('  　  a f b 　　 ')); // ->a f b
+            console.log(diyTrim(' ')); // ->
+            console.log(diyTrim('　')); // ->
+            console.log(diyTrim('')); // ->
+
+            /*
+            去掉字符串str中，连续重复的地方
+            */
+            function removeRepetition(str) {
+                var result = "";
+                var temp = "";
+                for (var i=0; i<str.length; i++) {
+                    if (temp != str[i]) {
+                        temp = str[i];
+                        result += temp;
+                    }
+                }
+
+                return result;
+            }
+
+            // 测试用例
+            console.log(removeRepetition("aaa")); // ->a
+            console.log(removeRepetition("abbba")); // ->aba
+            console.log(removeRepetition("aabbaabb")); // ->abab
+            console.log(removeRepetition("")); // ->
+            console.log(removeRepetition("abc")); // ->abc
+        </script>
+    </body>
+</html>
