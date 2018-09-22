@@ -11,7 +11,7 @@
     </head>
     <body>
         
-        <p id="result"></p>
+        <p id="result">请查看控制台</p>
         <script type="text/javascript">
             var tree = {
                 "id": 0,
@@ -68,7 +68,6 @@
 
             // 假设id和name均不会重复，根据输入name找到对应的id
             function findIdByName(name, obj) {
-                // alert(tree.name);
                 for (k in obj) {
                     if (obj.name == name) {
                         return obj["id"];
@@ -78,10 +77,6 @@
                         if (res) {
                             return res;
                         }
-                    //     if(obj[k].name == name){
-                    //     console.log(obj[k].name);
-                    //     break;
-                    // }
                     }
                 }
                 

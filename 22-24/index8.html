@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>队列</title>
+        <meta charset="utf-8" />
+        <style type="text/css">
+
+            
+            
+        </style>
+    </head>
+    <body>
+        <input id="stack-input" type="text">
+        <p id="stack-cont">栈内容：apple&lt;pear</p>    
+        <button id="push-btn">进栈</button>
+        <button id="pop-btn">退栈</button>
+        <button id="font-btn">打印栈顶元素内容</button>
+        <button id="empty-btn">判断栈是否为空</button>
+
+        <script>
+
+        var stack = ["apple", "pear"];
+        
+        var oInput = document.getElementById("stack-input");
+        var oCont = document.getElementById("stack-cont");
+        var oIn = document.getElementById("push-btn");
+        var oOut = document.getElementById("pop-btn");
+        var oFont = document.getElementById("font-btn");
+        var oEmpty = document.getElementById("empty-btn");
+
+        oIn.onclick = function() {
+            var value = oInput.value;
+            if (value == "") {
+                alert("请输入值！");
+                return;
+            }
+            stack.unshift(value);
+            oCont.innerText = "栈内容：" + stack.join("<-");
+        };
+        oOut.onclick = function() {
+            if (stack.length == 0) {
+                alert("队列中没有数据了！");
+                return;
+            }
+            stack.shift();
+            oCont.innerText = "栈内容：：" + stack.join("<-");
+        };
+        oFont.addEventListener("click", printFront);
+        oEmpty.addEventListener("click", isEmpty);
+        function printFront() {
+            if (stack.length == 0) {
+                alert("队列中没有数据了！");
+                return;
+            }
+            alert(stack[0]);
+        };
+        function isEmpty() {
+            if (stack.length == 0) {
+                alert("队列中没有数据了！");
+            } else {
+                alert("队列不为空");
+            }
+        };
+        </script>
+    </body>
+</html>
