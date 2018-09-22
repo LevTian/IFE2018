@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>队列</title>
+        <meta charset="utf-8" />
+        <style type="text/css">
+
+            
+            
+        </style>
+    </head>
+    <body>
+        <input id="queue-input" type="text">
+        <p id="queue-cont">队列内容：apple-&gt;pear</p>    
+        <button id="in-btn">入队</button>
+        <button id="out-btn">出队</button>
+        <button id="font-btn">打印队头元素内容</button>
+        <button id="empty-btn">判断队列是否为空</button>
+
+        <script>
+
+        var queue = ["apple", "pear"];
+        
+        var oInput = document.getElementById("queue-input");
+        var oCont = document.getElementById("queue-cont");
+        var oIn = document.getElementById("in-btn");
+        var oOut = document.getElementById("out-btn");
+        var oFont = document.getElementById("font-btn");
+        var oEmpty = document.getElementById("empty-btn");
+
+        oIn.onclick = function() {
+            var value = oInput.value;
+            if (value == "") {
+                alert("请输入值！");
+                return;
+            }
+            queue.unshift(value);
+            oCont.innerText = "队列内容：" + queue.join("->");
+        };
+        oOut.onclick = function() {
+            if (queue.length == 0) {
+                alert("队列中没有数据了！");
+                return;
+            }
+            queue.pop();
+            oCont.innerText = "队列内容：" + queue.join("->");
+        };
+        oFont.addEventListener("click", printFront);
+        oEmpty.addEventListener("click", isEmpty);
+        function printFront() {
+            if (queue.length == 0) {
+                alert("队列中没有数据了！");
+                return;
+            }
+            alert(queue[queue.length-1]);
+        };
+        function isEmpty() {
+            if (queue.length == 0) {
+                alert("队列中没有数据了！");
+            } else {
+                alert("队列不为空");
+            }
+        };
+        </script>
+    </body>
+</html>
