@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>20-21</title>
+        <meta charset="utf-8" />
+        <style type="text/css" >
+            .style1{margin:10px auto ;background-color:#9999FF; display:block;color:White; border:1px solid white; padding:10px 25px; font-size:18px; }
+ 
+            .style1:hover{ background-color:#66B3FF; cursor:pointer;}
+  
+            .style2{margin:10px auto ;background-color:gray; display:block;color:black; border:1px solid white; padding:10px 25px; font-size:18px; }
+  
+            .style2:hover{ background-color:black; color:White; cursor:pointer}
+            .size {font-size: 16px;}
+        </style>
+    </head>
+    <body>
+        <div>
+            <input id="btnB" type="button" name="btnLogin" value="登录" class="style1" />
+            <div id="tool">
+                <input type="button" value="【obj.style.className】更改样式" onclick="changeStyle1()"/>
+                <input type="button" value="【obj.style.cssText】更改样式" onclick="changeStyle2()" />
+                <input type="button" value="【obj.className】更改样式" onclick="changeStyle3()" />
+                <input type="button" value="更改外联css样式" onclick="changeStyle3()" />
+            </div>
+        </div>
+        <script>
+            function changeStyle1() {
+                var obj = document.getElementById("btnB");
+                obj.style.cssText += " background-color:black";
+                // obj.style.cssText += " display:block;color:White";
+                
+            }
+            function changeStyle2() {
+                var obj = document.getElementById("btnB");
+                obj.style.cssText += " ;display:block;color:White";
+            }
+            function changeStyle3() {
+                var obj = document.getElementById("btnB");
+                //obj.className = "style2";
+                obj.setAttribute("class", "style2");
+            }
+            function changeStyle3() {
+                var obj = document.getElementById("btnB");
+                var cls = "size";
+                //obj.className = "style2";
+                obj.className += " " + cls;
+            }
+        </script>
+    </body>
+</html>

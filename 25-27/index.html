@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>选择器</title>
+        <meta charset="utf-8" />
+        <style type="text/css">
+
+            
+            
+        </style>
+    </head>
+    <body>
+        
+        <p id="result"></p>
+        <p id="result1"></p>
+        <script type="text/javascript">
+            
+            var oResult = document.getElementById("result");
+            var oResult1 = document.getElementById("result1");
+            var t = setInterval(function(){
+                var d = new Date();
+                var year = d.getFullYear();
+                var month = d.getMonth();
+                var date = d.getDate();
+                var day = d.getDay();
+                var hour = d.getHours();
+                var minute = d.getMinutes();
+                var second = d.getSeconds();
+                hour = checkTime(hour);
+                minute = checkTime(minute);
+                second = checkTime(second);
+                oResult.innerHTML = setFormat(year, month, date, getxq(day), hour, minute, second);
+                oResult1.innerHTML = setEFormat(year, month, date, getexq(day), hour, minute, second);
+            }, 500);
+            
+
+            function checkTime(v) {
+                if (v < 10)  {
+                    return "0" + v;
+                } else {
+                    return v;
+                }
+            }
+            function getxq(v) {
+                var res = "";
+                switch (v) {
+                    case  1:
+                        res = "一";
+                        break;
+                    case  2:
+                        res = "二";
+                        break;
+                    case  3:
+                        res = "三";
+                        break;
+                    case  4:
+                        res = "四";
+                        break;
+                    case  5:
+                        res = "五";
+                        break;
+                    case  6:
+                        res = "六";
+                        break;
+                    case  7:
+                        res = "七";
+                        break;
+
+                }
+                return res;
+            }
+            function getexq(v) {
+                var res = "";
+                switch (v) {
+                    case  1:
+                        res = "Monday";
+                        break;
+                    case  2:
+                        res = "Tuesday";
+                        break;
+                    case  3:
+                        res = "Wednesday";
+                        break;
+                    case  4:
+                        res = "Thursday";
+                        break;
+                    case  5:
+                        res = "Friday";
+                        break;
+                    case  6:
+                        res = "Saturday";
+                        break;
+                    case  7:
+                        res = "Sunday";
+                        break;
+
+                }
+                return res;
+            }
+            function setFormat(year, month, date, day, hour, minute, second) {
+                return year + "年" + month + "月" + date + "日星期" + day + hour + ":" + minute + ":" + second;
+            }
+            function ampm(hour) {
+                var res = "";
+                res =  parseInt(hour) > 12 ? "PM" : "AM";
+                return res;
+            }
+            function setEFormat(year, month, date, day, hour, minute, second) {
+                return year + "-" + month + "-" + date + " " + day + " " + hour + ":" + minute + ":" + second + " " + ampm(hour);
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>28-30</title>
+        <meta charset="utf-8" />
+        <style type="text/css">
+            #email-sug-wrapper {
+                margin: 0;
+                padding: 0;
+            }
+            #email-sug-wrapper li {
+                list-style: none;
+                width: 200px;
+                cursor: pointer;
+            }
+            #email-sug-wrapper li:hover {
+                background-color: #f1a07c;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <input id="email-input" type="text">
+            <ul id="email-sug-wrapper" class="email-sug"></ul>
+        </div>
+        <script type="text/javascript">
+        var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+            var oInput = document.querySelector("#email-input");
+            var oUl = document.querySelector("#email-sug-wrapper");
+
+            function getIntput() {
+                var value = oInput.value;
+                return value.trim();
+            }
+
+            function createText(value) {
+                oUl.innerHTML = "";
+                var index = value.indexOf("@");
+                var qian = "";
+                if (index != -1) {
+                    qian = value.substring(index+1);
+                    value = value.slice(0, index);
+                }
+                for (var i=0; i<postfixList.length; i++) {
+                    if (qian) {
+                        if (postfixList[i].indexOf(qian) != -1) {
+                            var li = document.createElement("li");
+                            li.innerHTML = value + "@" + postfixList[i];
+                            oUl.appendChild(li);
+                        }
+                        
+                    } else {
+                        var li = document.createElement("li");
+                        li.innerHTML = value + "@" + postfixList[i];
+                        oUl.appendChild(li);
+                    }
+                    
+                    
+                }
+                if (qian && oUl.innerHTML == "") {
+                    for (var i=0; i<postfixList.length; i++) {
+                        var li = document.createElement("li");
+                        li.innerHTML = value + "@" + postfixList[i];
+                        oUl.appendChild(li);
+                    }
+                }
+            }
+
+            function displayHide(value) {
+                if (!value) {
+                    oUl.style.display = "none";
+                } else {
+                    oUl.style.display = "block";
+                }
+            }
+            oInput.onkeyup = function() {
+                var value = getIntput();
+                createText(value);
+                displayHide(value);
+            };
+            oUl.onclick = function(e) {
+                e = e || window.event;
+                var target = e.target || e.srcElement;
+                if (target.nodeName.toLowerCase() == "li") {
+                    var value = target.innerHTML;
+                    oInput.value = value;
+                    oUl.style.display = "none";
+                }
+            }
+           
+        </script>
+    </body>
+</html>

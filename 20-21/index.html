@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>20-21</title>
+        <meta charset="utf-8" />
+        <style type="text/css" >
+        
+        </style>
+    </head>
+    <body>
+        <input id="name" type="text">    
+        <button id="submit-btn">Submit</button>
+        <script>
+            var Oinput = document.querySelector("input");
+            var Obtn = document.querySelector("button");
+
+            Obtn.onclick = function(){
+                console.log(Oinput.value);
+            };
+
+            Oinput.onkeydown = function(e) {
+                e = e || window.event;
+                // console.log(e instanceof Object);
+                // for (var key in e) {
+                //     console.log(key + " : " + e[key]);
+                // }
+                if (e.key == "Enter") {
+                    console.log(Oinput.value);
+                }
+                if (e.key == "Escape") {
+                    Oinput.value = "";
+                }
+            };
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+    <style>
+        select {
+            display: none;
+        }
+        .display {
+            display: block;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>            
+    <label>
+        <input id="school" name="status" type="radio">
+        School
+    </label>
+    <label>
+        <input id="company" name="status" type="radio">
+        Company
+    </label>
+
+    <select id="school-select">        
+        <option>北京邮电大学</option>
+        <option>黑龙江大学</option>
+        <option>华中科技大学</option>
+    </select>
+
+    <select id="company-select">        
+        <option>百度</option>
+        <option>爱奇艺</option>        
+    </select>
+</body>
+<script type="text/javascript">
+    var oSchool = document.querySelector("#school");
+    var oCompany = document.querySelector("#company");
+    var oSs = document.getElementById("school-select");
+    var oCs = document.getElementById("company-select");
+    // oSchool.onclick = function() {
+    //     oSs.style.cssText = "display:block;"
+    //     oCs.style.cssText = "display:none;"
+    // };
+    // oCompany.onclick = function() {
+    //     oSs.style.cssText = "display:none;"
+    //     oCs.style.cssText = "display:block;"
+    // };
+    oSchool.onclick = function() {
+        oSs.className = "display";
+        oCs.className = "hidden";
+    };
+    oCompany.onclick = function() {
+        oSs.className = "hiddend";
+        oCs.className = "isplay";
+    };
+
+</script>
+</html>
