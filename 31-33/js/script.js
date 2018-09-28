@@ -2,7 +2,7 @@ var regionWrap = document.getElementById("region-radio-wrapper");
 var productWrap = document.getElementById("product-radio-wrapper");
 var tw = document.getElementById("table-wrapper");
 var months = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
-
+var regionFirst = false;
 createCheckBox(regionWrap, ["region", "华东", "华南", "华北"]);
 createCheckBox(productWrap, ["product", "手机", "笔记本", "智能音箱"]);
 
@@ -28,6 +28,7 @@ function getData() {
     }
     //只有地区，没有商品  地区在前
     if (list[0].length > 0 && list[1].length == 0) {
+        regionFirst = true;
         for (var i=0; i<list[0].length; i++) {
             for (var j=0; j<sourceData.length; j++) {
                 if (sourceData[j].region == list[0][i]) {
@@ -37,6 +38,7 @@ function getData() {
         }
     } else if (list[0].length == 0 && list[1].length > 0) {
         //只有商品，没有地区
+        regionFirst = false;
         for (var i=0; i<list[1].length; i++) {
             for (var j=0; j<sourceData.length; j++) {
                 if (sourceData[j].product == list[1][i]) {
@@ -44,17 +46,30 @@ function getData() {
                 } 
             }
         }        
-    } else if (list[0].length > 0 && list[1].length > 0) {
-        for (var i=0; i<list[0].length; i++) {
-            for (var j=0; j<list[1].length; j++) {
+    } else if (list[0].length == 1 && list[1].length > 0) {
+        //产品和地区都多个时，产品集中，所以先遍历list[1]
+        regionFirst = true;
+        for (var j=0; j<list[1].length; j++) {
+            for (var x=0; x<sourceData.length; x++) {
+                if (sourceData[x].product == list[1][j] && sourceData[x].region == list[0][0]) {
+                    list[2].push(sourceData[x]);
+                }
+            }
+        }
+    }
+    else if (list[0].length > 1 && list[1].length > 0) {
+        regionFirst = false;
+        for (var i=0; i<list[1].length; i++) {      //产品和地区都多个时，产品集中，所以先遍历list[1]
+            for (var j=0; j<list[0].length; j++) {
                 for (var x=0; x<sourceData.length; x++) {
-                    if (sourceData[x].product == list[1][j] && sourceData[x].region == list[0][i]) {
+                    if (sourceData[x].product == list[1][i] && sourceData[x].region == list[0][j]) {
                         list[2].push(sourceData[x]);
                     }
                 }
             }
         }
     }
+    console.log(list);
     return list;
 }
 
@@ -84,11 +99,47 @@ function drawTable(data) {
     for (var i=0; i<data[2].length; i++) {
         var tr = document.createElement("tr");
         var td = document.createElement("td");
-        var text = document.createTextNode(data[2][i].product);
-        td.appendChild(text);
-        tr.appendChild(td);
+        if (regionFirst) {
+            var text = document.createTextNode(data[2][i].region);
+        } else {
+            var text = document.createTextNode(data[2][i].product);
+        }
+        //只选中其中一个，第一列三行相同
+        if ((data[0].length > 0 && data[1].length == 0) || (data[0].length == 0 && data[1].length > 0)) {
+            if ((i+1)%3 == 1) {
+                td.setAttribute("rowspan", "3");
+                td.appendChild(text);
+                tr.appendChild(td);
+            } else {
+
+            }
+        } else if ((data[0].length == 1 && data[1].length > 1) || (data[0].length > 1 && data[1].length == 1) || (data[0].length > 1 && data[1].length > 1)) {
+            //其中一个只选中一个，或者每个都选中多个，根据长度判断
+            var length = 0;
+            if (regionFirst) {
+                length = data[1].length;
+            } else {
+                length = data[0].length;
+            }
+            if ((i+1)%length == 1) {
+                td.setAttribute("rowspan", length);
+                td.appendChild(text);
+                tr.appendChild(td);
+            } else {
+
+            }
+        } else {
+            td.appendChild(text);
+            tr.appendChild(td);
+        }
+        
         var td = document.createElement("td");
-        var text = document.createTextNode(data[2][i].region);
+        if (regionFirst) {
+            var text = document.createTextNode(data[2][i].product);
+        } else {
+            var text = document.createTextNode(data[2][i].region);
+        }
+        
         td.appendChild(text);
         tr.appendChild(td);
         for (var j=0; j<data[2][i].sale.length; j++) {
