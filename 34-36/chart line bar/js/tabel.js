@@ -154,6 +154,7 @@ function drawTable(data) {
     }
     tw.appendChild(table);
     bundHoverEvent();
+	cleanData = [];     //  需每次清空
     for (var i=0; i<data[2].length; i++) {
         cleanData.push(data[2][i].sale)
     }
