@@ -4,6 +4,7 @@ var regionFirst = false;
 var canvas = document.getElementById("canvas-wrapper");
 var svg = document.getElementById("svg-wrapper");   
 var saveData = document.getElementById("save");
+var clearData = document.getElementById("clear");
 var line = new line();
 var bar = new bar();
 var cleanData = [];
@@ -29,15 +30,26 @@ function getData() {
         }
     }
 
-    if (sessionStorage.localData) {
-        // console.log(JSON.parse(sessionStorage.localData));
-        // list[2].push(JSON.parse(sessionStorage.localData));
-        var localData = JSON.parse(sessionStorage.localData);
-    getLocalData(localData, list);
-    } else {
+    // if (localStorage.localData != null) {
+    //     // console.log(JSON.parse(localStorage.localData));
+    //     // list[2].push(JSON.parse(localStorage.localData));
+    //     console.log(localStorage.localData);
+    //     var localData = JSON.parse(localStorage.localData);
+    //     getLocalData(localData, list);
+    // } else {
+    //     getSourceData(list);
+    // }
+    if (localStorage.localData === null) {
         getSourceData(list);
+    } else {
+        console.log(localStorage.localData);
+        var localData = JSON.parse(localStorage.localData);
+        getLocalData(localData, list);
     }
+    // getSourceData(list);
+    console.log(list);
     return list;
+    
 }
 
 function getLocalData(localData, list) {
@@ -136,7 +148,6 @@ function getSourceData(list) {
 
 //渲染表格
 function drawTable(data) {
-    console.log(data);
     tw.innerHTML = "";
     //表头
     var table = document.createElement("table");
@@ -224,7 +235,6 @@ function drawTable(data) {
     for (var i=0; i<data[2].length; i++) {
         cleanData.push(data[2][i].sale)
     }
-    console.log(cleanData);
     line.init(cleanData, canvas);
 }
 
@@ -314,8 +324,14 @@ function bundEvent() {
             obj.sale = array;
             localData.push(obj);
         }
-        //使用localStorage/sessionStorage存储对象时，需先用JSON.stringify()转化为字符串， 取出时使用JSON.parse()还原
+        //使用localStorage/localStorage存储对象时，需先用JSON.stringify()转化为字符串， 取出时使用JSON.parse()还原
         // console.log(localData);
-        sessionStorage.localData = JSON.stringify(localData);
+        localStorage.localData = JSON.stringify(localData);
     }
+
+    
+}
+
+clearData.onclick = function(e) {
+    localStorage.localData = null;
 }
