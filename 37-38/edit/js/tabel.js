@@ -30,24 +30,17 @@ function getData() {
         }
     }
 
-    // if (localStorage.localData != null) {
-    //     // console.log(JSON.parse(localStorage.localData));
-    //     // list[2].push(JSON.parse(localStorage.localData));
-    //     console.log(localStorage.localData);
-    //     var localData = JSON.parse(localStorage.localData);
-    //     getLocalData(localData, list);
-    // } else {
-    //     getSourceData(list);
-    // }
-    if (localStorage.localData === null) {
-        getSourceData(list);
-    } else {
-        console.log(localStorage.localData);
-        var localData = JSON.parse(localStorage.localData);
+    if (localStorage.localData) {
+        // console.log(JSON.parse(localStorage.localData));
+        // list[2].push(JSON.parse(localStorage.localData));
+        // console.log(localStorage.localData);
+        var localData = JSON.parse(localStorage.getItem("localData"));
         getLocalData(localData, list);
+    } else {
+        getSourceData(list);
     }
-    // getSourceData(list);
-    console.log(list);
+
+    // console.log(list);
     return list;
     
 }
@@ -326,12 +319,10 @@ function bundEvent() {
         }
         //使用localStorage/localStorage存储对象时，需先用JSON.stringify()转化为字符串， 取出时使用JSON.parse()还原
         // console.log(localData);
-        localStorage.localData = JSON.stringify(localData);
+        localStorage.setItem("localData", JSON.stringify(localData));
     }
-
-    
 }
 
 clearData.onclick = function(e) {
-    localStorage.localData = null;
+    localStorage.removeItem("localData");
 }
