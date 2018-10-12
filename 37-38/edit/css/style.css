@@ -1,0 +1,34 @@
+table, th, td {
+    border: 1px solid #000000;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table {
+    width: 1000px;
+}
+input.data {
+    width: 55px;
+}
+
+tr:hover {
+    background-color: aquamarine;
+}
+
+#chart-wrapper::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#svg-wrapper, #canvas-wrapper {
+    float: left;
+    margin-left: 10px;
+}
+
+#table-wrapper {
+    /* 事件委托在该标签，需设置宽度，如不设置会在鼠标往右侧移出table后曲线不显示 */
+    width: 560px;
+    margin-top: 20px;
+}
+
