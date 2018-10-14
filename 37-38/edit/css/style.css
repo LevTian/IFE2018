@@ -32,3 +32,13 @@ tr:hover {
     margin-top: 20px;
 }
 
+span.edit {
+    font-size: 10px;
+    color: #a1a1a1;
+    float: right;
+}
+input.edit-input {
+    width: 50px;
+    float: left;
+}
+

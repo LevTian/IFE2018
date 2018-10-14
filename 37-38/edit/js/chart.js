@@ -160,8 +160,8 @@ function bar() {
         axisY.setAttribute("x2", "0");
         axisY.setAttribute("y2", this.height-this.axisHight);
         axisY.setAttribute("stroke", this.axisColor);
-        this.svg.appendChild(axisY);
-
+        this.svg.appendChild(axisY); 
+        
         for (var i=0; i<this.data.length; i++) {
             var height = this.height - this.data[i]*this.ratio;
             var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");

@@ -31,9 +31,6 @@ function getData() {
     }
 
     if (localStorage.localData) {
-        // console.log(JSON.parse(localStorage.localData));
-        // list[2].push(JSON.parse(localStorage.localData));
-        // console.log(localStorage.localData);
         var localData = JSON.parse(localStorage.getItem("localData"));
         getLocalData(localData, list);
     } else {
@@ -233,66 +230,170 @@ function drawTable(data) {
 
 function bundEvent() {
     var table = document.querySelector("table");
-    var trs = tw.getElementsByTagName("tr");
-    //over进入之后每经过一个tr都会触发, enter只在进入时触发一次
-    tw.onmouseover = function(e) {
-        e = e || window.event;
-        var target = e.target || e.srcElement;
-        var data = [];
-        if (target.nodeName.toLowerCase() == "td") {
-            //获取tr元素，如果焦点在input上则需要找到父元素的父元素
-            // if (target.nodeName.toLowerCase() == "input") {
-            //     //保存原始值
-            //     var oldValue = target.value;
-            //     target.onblur = function(e) {
-            //         e = e || window.event;
-            //         var target = e.target || e.srcElement;
-            //         if (target.nodeName.toLowerCase() == "input") {
-            //             var value = target.value;
-            //             if (/\d/.test(value)) {
-            
-            //             } else {
-            //                 alert("输入内容不是数字！");
-            //                 target.value = oldValue;
-            //                 return;
-            //             }
-            //         }
-            //     }
-            //     var tr = target.parentElement.parentElement;
-            // } else {   
-            // }
-            // console.log(tr);
+    var tds = tw.getElementsByTagName("td");
+
+    for (var i=0; i<tds.length; i++) {
+        tds[i].onmouseenter = function(e) {
+            e = e || window.event;
+            var target = e.target || e.srcElement;
+            var data = [];
             var tr = target.parentElement;
             var tds = tr.getElementsByTagName("td");
             var length = tds.length;
             var i = 0;
             length == 14 ? i=2 : i=1;
             for (; i<length; i++) {
-                // tds[i].getElementsByClassName("data")[0];
-                // data.push(parseInt(tds[i].getElementsByTagName("input")[0].value));
                 data.push(parseInt(tds[i].innerText));
             }
+            var span = document.createElement("span");
+            span.className = "edit";
+            var text = document.createTextNode("编辑");
+            span.appendChild(text);
+            target.appendChild(span);
+            line.init(data, canvas);
+            bar.init(data, svg);
         }
-        line.init(data, canvas);
-        bar.init(data, svg);
+        tds[i].onmouseleave = function(e) {
+            var span = this.getElementsByTagName("span")[0];
+            var buttons = this.getElementsByTagName("button");
+            var input = this.getElementsByTagName("input")[0];
+            //此处需要先做判断，有可能在点击时已经删除了
+            if (input) {
+                var oldValue = input.getAttribute("oldValue");
+                this.removeChild(input);
+                //先移除0会报错，不知怎么回事
+                this.removeChild(buttons[1]);
+                this.removeChild(buttons[0]);
+                this.innerText = oldValue;
+            }
+            if (span) {
+                this.removeChild(span);
+            }
+            bar.clearBar();
+            line.init(cleanData, canvas);
+        }
+        
     }
-    tw.onmouseleave = function(e) {
-        bar.clearBar();
-        line.init(cleanData, canvas);
-    }
-    //div没有onblur事件
-    // table.onblur = function(e) {
+
+    //over进入之后每经过一个tr都会触发, enter只在进入时触发一次
+    // tw.onmouseenter = function(e) {
     //     e = e || window.event;
     //     var target = e.target || e.srcElement;
-    //     if (target.nodeName.toLowerCase() == "input") {
-    //         var value = target.value;
-    //         if (/\d/.test(value)) {
-
-    //         } else {
-    //             alert("输入内容不是数字！");
-    //         }
+    //     var data = [];
+    //     for (var k in target) {
+    //         console.log(k, target[k]);
     //     }
+    //     if (target.nodeName.toLowerCase() == "td") {
+    //         var tr = target.parentElement;
+    //         var tds = tr.getElementsByTagName("td");
+    //         var length = tds.length;
+    //         var i = 0;
+    //         length == 14 ? i=2 : i=1;
+    //         for (; i<length; i++) {
+    //             data.push(parseInt(tds[i].innerText));
+    //         }
+    //         var span = document.createElement("span");
+    //         span.className = "edit";
+    //         var text = document.createTextNode("编辑");
+    //         span.appendChild(text);
+    //         target.appendChild(span);
+    //     }
+    //     line.init(data, canvas);
+    //     bar.init(data, svg);
     // }
+
+    // tw.onmouseout = function(e) {
+    //     e = e || window.event;
+    //     var target = e.target || e.srcElement;
+    //     if (target.nodeName.toLowerCase() == "td") {
+    //         var span = target.getElementsByTagName("span")[0];
+    //         //此处需要先做判断，有可能在点击时已经删除了
+    //         if (span) {
+    //             target.removeChild(span);
+    //         }
+
+    //     }
+    //     bar.clearBar();
+    //     line.init(cleanData, canvas);
+    // }
+    tw.onclick = function(e) {
+        e = e || window.event;
+        var target = e.target || e.srcElement;
+        if (target.nodeName.toLowerCase() == "td") {
+            var span = target.getElementsByTagName("span")[0];
+            if (span) {
+                target.removeChild(span);
+            }
+            var value = target.innerText;
+            target.innerHTML = "";
+            var input = document.createElement("input");
+            input.setAttribute("type", "text");
+            input.className = "edit-input";
+            input.setAttribute("value", value);
+            input.setAttribute("oldValue", value);
+            target.appendChild(input);
+            var btnConfirm = document.createElement("button");
+            btnConfirm.setAttribute("id", "btn-confirm");
+            var text = document.createTextNode("确认");
+            btnConfirm.appendChild(text);
+            target.appendChild(btnConfirm);
+            var btnCancel = document.createElement("button");
+            btnCancel.setAttribute("id", "btn-cancel");
+            var text = document.createTextNode("取消");
+            btnCancel.appendChild(text);
+            target.appendChild(btnCancel);
+
+            btnConfirm.onclick = confirmOpt;
+
+            btnCancel.onclick = cancelOpt;
+
+            input.onkeydown = function(e) {
+                e = e || window.event;
+                var target = e.target || e.srcElement;
+                var key = e.keyCode;
+                if (13 == key) {
+                    confirmOpt();
+                }
+                else if (27 == key) {
+                    cancelOpt();
+                }
+            }
+
+            // input.onblur = cancelOpt;
+
+            function confirmOpt() {
+                var value = input.value;
+                if (/^\d$/.test(value)) {
+                    target.innerText = value;
+                } else {
+                    alert("输入内容不是数字！");
+                    var oldValue = input.getAttribute("oldValue");
+                    target.innerText = oldValue;
+                    return;
+                }
+            }
+
+            function cancelOpt() {
+                var oldValue = input.getAttribute("oldValue");
+                target.innerText = oldValue;
+            }
+        }
+    }
+    // div没有onblur事件
+    table.onblur = function(e) {
+        alert("blur");
+        e = e || window.event;
+        var target = e.target || e.srcElement;
+        console.log(target);
+        if (target.nodeName.toLowerCase() == "input") {
+            var value = target.value;
+            if (/\d/.test(value)) {
+
+            } else {
+                alert("输入内容不是数字！");
+            }
+        }
+    }
 
     saveData.onclick = function(e) {
         var localData = [];
