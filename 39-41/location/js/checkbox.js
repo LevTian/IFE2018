@@ -91,6 +91,14 @@ function createCheckBox(wrap, obj) {
                 window.location.hash += c2e[id];
                 for (var i=0; i<length-1; i++) {
                     inputs[i].checked = true;
+                    var oneId = inputs[i].getAttribute("id");
+                    var oldValue = window.location.hash;
+                    console.log(oneId, oldValue);
+                    if (oldValue.match(c2e[oneId])) {
+
+                    } else {
+                        window.location.hash += c2e[oneId];
+                    }
                 }
             } else {
                 var oldValue = window.location.hash;
