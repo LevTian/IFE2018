@@ -363,7 +363,7 @@ function bundEvent() {
 
             function confirmOpt() {
                 var value = input.value;
-                if (/^\d$/.test(value)) {
+                if (/^\d+$/.test(value)) {
                     target.innerText = value;
                 } else {
                     alert("输入内容不是数字！");
